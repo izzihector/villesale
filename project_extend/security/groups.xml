@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.module.category" id="category_project_type">
+            <field name="name">Projets de la commune</field>
+            <field name="description">Projets de la commune</field>
+            <field name="sequence">10</field>
+        </record>
+
+        <record id="groups_project_juridique" model="res.groups">
+            <field name="name">Gestion des affaires juridiques et contentieux</field>
+            <field name="category_id" ref="base.module_category_hidden"/>
+        </record>
+
+        <record id="groups_project_patrimoine" model="res.groups">
+            <field name="name">Gestion du Patrimoine</field>
+            <field name="category_id" ref="base.module_category_hidden"/>
+        </record>
+    </data>
+</odoo>
