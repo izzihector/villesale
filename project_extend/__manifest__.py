@@ -11,7 +11,7 @@
         'project',
     ],
     'data': [
-        'security/groups.xml'
+        'security/groups.xml',
         'views/project_views.xml',
     ],
     'installable': True,
