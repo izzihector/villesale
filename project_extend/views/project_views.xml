@@ -15,6 +15,7 @@
         <field name="name">Affaires Juridiques et contentieux</field>
         <field name="res_model">project.project</field>
         <field name="domain">[('project_type', '=', 'juridique')]</field>
+        <field name="context">{'default_project_type': 'juridique'}</field>
         <field name="view_mode">kanban,form</field>
         <field name="view_id" ref="project.view_project_kanban"/>
     </record>
@@ -23,6 +24,7 @@
         <field name="name">Gestion du Patrimoine</field>
         <field name="res_model">project.project</field>
         <field name="domain">[('project_type', '=', 'patrimoine')]</field>
+        <field name="context">{'default_project_type': 'patrimoine'}</field>
         <field name="view_mode">kanban,form</field>
         <field name="view_id" ref="project.view_project_kanban"/>
     </record>
@@ -40,6 +42,5 @@
               web_icon="project_extend,static/description/patrimoine_icon.png"
               groups="project_extend.groups_project_patrimoine"
     />
-
 
 </odoo>
