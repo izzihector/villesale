@@ -15,6 +15,7 @@ class HrEmployee(models.Model):
 
     def name_get(self):
         result = []
+        # comment
         for record in self:
             record_name = record.name
             if record.french_name:
