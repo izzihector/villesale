@@ -8,9 +8,10 @@
     'author': 'Osisoftware',
     'website': '',
     "depends": [
-        'project',
+        'hr',
     ],
     'data': [
+        'views/hr_position_views.xml',
         'views/hr_views.xml',
     ],
     'installable': True,

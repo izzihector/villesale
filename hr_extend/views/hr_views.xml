@@ -9,7 +9,19 @@
                 <h2>
                     <field name="french_name" placeholder="Nom en Français"/>
                 </h2>
+                <h2>
+                    <field name="ppr" placeholder="PPR"/>
+                </h2>
             </xpath>
+            <field name="identification_id" position="after">
+                <field name="cin"/>
+            </field>
+            <field name="work_location" position="after">
+                <field name="mission"/>
+            </field>
+            <field name="certificat" position="after">
+                <field name="diploma_type"/>
+            </field>
         </field>
     </record>
 
