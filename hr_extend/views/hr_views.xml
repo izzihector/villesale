@@ -19,7 +19,7 @@
             <field name="work_location" position="after">
                 <field name="mission"/>
             </field>
-            <field name="certificat" position="after">
+            <field name="certificate" position="after">
                 <field name="diploma_type"/>
             </field>
         </field>
