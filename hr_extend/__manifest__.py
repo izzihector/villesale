@@ -11,6 +11,7 @@
         'hr',
     ],
     'data': [
+        'security/ir.model.access.csv',
         'views/hr_position_views.xml',
         'views/hr_views.xml',
     ],

@@ -75,7 +75,7 @@
         <field name="inherit_id" ref="hr.view_employee_filter"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='name']" position="after">
-                <filter name="french_name" string="Nom en Français"/>
+                <field name="french_name" string="Nom en Français" />
             </xpath>
         </field>
     </record>
