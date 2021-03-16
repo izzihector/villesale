@@ -17,6 +17,7 @@
                 <field name="cin"/>
             </field>
             <field name="work_location" position="after">
+                <field name="position_id"/>
                 <field name="mission"/>
             </field>
             <field name="certificate" position="after">

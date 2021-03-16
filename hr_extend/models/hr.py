@@ -11,6 +11,7 @@ class HrEmployee(models.Model):
     ppr = fields.Char('PPR')
     cin = fields.Char('CIN')
     mission = fields.Char('Mission')
+    position_id = fields.Many2one('hr.position', string="Position")
     diploma_type = fields.Char('Type de Diplome')
 
     def name_get(self):
