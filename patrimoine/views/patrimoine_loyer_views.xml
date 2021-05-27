@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="patrimoine_loyer_form_view" model="ir.ui.view">
+        <field name="name">patrimoine.loyer.form.view</field>
+        <field name="model">patrimoine.loyer</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="rc"/>
+                            <field name="patente"/>
+                            <field name="personnephysiqueoumorale"/>
+                        </group>
+                        <group>
+                            <field name="nom_societe"/>
+                            <field name="nom_locataire"/>
+                            <field name="designation_locataire"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Informations 1">
+                            <group>
+                                <field name="cin_locataire"/>
+                                <field name="adresse_locataire"/>
+                                <field name="tel"/>
+                            </group>
+                            <group>
+                                <field name="etat_administratif"/>
+                                <field name="nom_exploitant"/>
+                                <field name="designation_exploitant"/>
+                            </group>
+                        </page>
+                        <page string="Informations 2">
+                            <group>
+                                <field name="cin_exploitant"/>
+                                <field name="adresse_exploitant"/>
+                                <field name="tel_exploitant"/>
+                            </group>
+                            <group>
+                                <field name="nature_exploitant"/>
+                                <field name="activite_exploitant"/>
+                                <field name="type_contrat"/>
+                                <field name="disponible"/>
+                            </group>
+                        </page>
+                        <page string="Informations 3">
+                            <group>
+                                <field name="date_contrat"/>
+                                <field name="duree_location"/>
+                                <field name="prix_loyer_num"/>
+                            </group>
+                            <group>
+                                <field name="prix_loyer"/>
+                                <field name="periodicite"/>
+                                <field name="etat_taxes"/>
+                            </group>
+                        </page>
+                        <page string="Informations 4">
+                            <group>
+                                <field name="duree_mois"/>
+                                <field name="source"/>
+                                <field name="date"/>
+                                <field name="numero"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    <record id="patrimoine_loyer_tree_view" model="ir.ui.view">
+        <field name="name">patrimoine.loyer.tree.view</field>
+        <field name="model">patrimoine.loyer</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="rc"/>
+                <field name="patente"/>
+                <field name="personnephysiqueoumorale"/>
+                <field name="nom_societe"/>
+                <field name="nom_locataire"/>
+                <field name="designation_locataire"/>
+            </tree>
+        </field>
+    </record>
+</odoo>

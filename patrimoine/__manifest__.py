@@ -2,18 +2,18 @@
 
 
 {
-    'name': u'Commune de Salé: Gestion des Ressources Humaines',
+    'name': u'Commune de Salé: Gestion des Loyers',
     'version': '1.0',
-    'summary': u'RH',
+    'summary': u'Loyers',
     'author': 'Osisoftware',
     'website': '',
     "depends": [
-        'hr', 'hr_contract'
+        'project_extend'
     ],
     'data': [
         'security/ir.model.access.csv',
-        'views/hr_position_views.xml',
-        'views/hr_views.xml',
+        'views/patrimoine_views.xml',
+        'views/patrimoine_loyer_views.xml',
     ],
     'installable': True,
     'auto_install': False,

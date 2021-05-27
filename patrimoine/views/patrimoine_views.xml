@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="patrimoine_patrimoine_form_view" model="ir.ui.view">
+        <field name="name">patrimoine.patrimoine.form.view</field>
+        <field name="model">patrimoine.patrimoine</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="num_id"/>
+                            <field name="parent_id"/>
+                            <field name="doc_source"/>
+                            <field name="arrondissment"/>
+                            <field name="utilisation"/>
+                        </group>
+                        <group>
+                            <field name="type"/>
+                            <field name="bien"/>
+                            <field name="consistance"/>
+                            <field name="loyer_id"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Informations 1">
+                            <group>
+                                <field name="superficie"/>
+                                <field name="superficie_num"/>
+                                <field name="source"/>
+                            </group>
+                            <group>
+                                <field name="destination"/>
+                                <field name="adresse"/>
+                                <field name="prix"/>
+                            </group>
+                        </page>
+                        <page string="Informations 2">
+                            <group>
+                                <field name="prix_acquisition"/>
+                                <field name="prix_acquisition_num"/>
+                                <field name="titre_date"/>
+                            </group>
+                            <group>
+                                <field name="reference"/>
+                                <field name="reference_vente"/>
+                                <field name="prix_vente"/>
+                            </group>
+                        </page>
+                        <page string="Informations 3">
+                            <group>
+                                <field name="date_contrat"/>
+                                <field name="nom_exploitant"/>
+                                <field name="duree_exploitation"/>
+                            </group>
+                            <group>
+                                <field name="frequence_loyer"/>
+                                <field name="prix_loyer"/>
+                                <field name="prix_loyer_annuel"/>
+                            </group>
+                        </page>
+                        <page string="Informations 4">
+                            <group>
+                                <field name="remarque"/>
+                                <field name="type_foncier"/>
+                                <field name="type_location"/>
+                                <field name="bis"/>
+                            </group>
+                            <group>
+                                <field name="etage"/>
+                                <field name="type_2"/>
+                                <field name="numero"/>
+                                <field name="etat_actuel"/>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="patrimoine_patrimoine_tree_view" model="ir.ui.view">
+        <field name="name">patrimoine.patrimoine.tree.view</field>
+        <field name="model">patrimoine.patrimoine</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="num_id"/>
+                <field name="parent_id"/>
+                <field name="doc_source"/>
+                <field name="arrondissment"/>
+                <field name="utilisation"/>
+                <field name="type"/>
+                <field name="bien"/>
+                <field name="consistance"/>
+                <field name="loyer_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_patrimoine_patrimoine" model="ir.actions.act_window">
+        <field name="name">Liste des Patrimoines</field>
+        <field name="res_model">patrimoine.patrimoine</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="Liste des patrimoines"
+              id="patrimoine_patrimoine_menu_id"
+              parent="project_extend.patrimoine_project_menu_item"
+              action="action_patrimoine_patrimoine"
+    />
+</odoo>

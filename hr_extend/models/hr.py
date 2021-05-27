@@ -4,6 +4,12 @@ from odoo import models, fields, api
 from odoo.osv import expression
 
 
+class HrContract(models.Model):
+    _inherit = "hr.contract"
+
+    ppr = fields.Char('PPR')
+
+
 class HrEmployee(models.Model):
     _inherit = "hr.employee"
 
