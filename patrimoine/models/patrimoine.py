@@ -5,19 +5,18 @@ from odoo import models, fields, api
 
 class PatrimoinePatrimoine(models.Model):
     _name = "patrimoine.patrimoine"
+    _rec_name = "num_id"
 
     num_id = fields.Char('ID')
     doc_source = fields.Char('Document Source')
     arrondissment = fields.Char('Arrondissement')
-    type = fields.Char('Type')
-    bien = fields.Char('Bien')
+    type_bien = fields.Char('Type du bien')
     consistance = fields.Char('Consistance')
     superficie = fields.Char('Superficie')
     superficie_num = fields.Float('Superficie numérique')
     source = fields.Char('Source')
     destination = fields.Char('Destination')
     adresse = fields.Char('Adresse')
-    prix = fields.Char('Prix')
     prix_acquisition = fields.Char('Prix acquisition')
     prix_acquisition_num = fields.Float('Prix acquisition numérique')
     titre_date = fields.Char('Titre et date')
@@ -45,8 +44,8 @@ class PatrimoinePatrimoine(models.Model):
 
 class PatrimoineLoyer(models.Model):
     _name = "patrimoine.loyer"
-    _rec_name = 'rc'
 
+    name = fields.Char('ID')
     rc = fields.Char('RC')
     patente = fields.Char('Patente')
     personnephysiqueoumorale = fields.Char('Personne physique ou morale')

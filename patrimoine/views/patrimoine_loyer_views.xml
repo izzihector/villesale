@@ -8,6 +8,7 @@
                 <sheet>
                     <group>
                         <group>
+                            <field name="name"/>
                             <field name="rc"/>
                             <field name="patente"/>
                             <field name="personnephysiqueoumorale"/>
@@ -74,6 +75,7 @@
         <field name="model">patrimoine.loyer</field>
         <field name="arch" type="xml">
             <tree>
+                <field name="name"/>
                 <field name="rc"/>
                 <field name="patente"/>
                 <field name="personnephysiqueoumorale"/>
@@ -83,4 +85,16 @@
             </tree>
         </field>
     </record>
+
+    <record id="action_patrimoine_loyer" model="ir.actions.act_window">
+        <field name="name">Loyers</field>
+        <field name="res_model">patrimoine.loyer</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="Liste des loyers"
+              id="patrimoine_loyer_menu_id"
+              parent="project_extend.patrimoine_project_menu_item"
+              action="action_patrimoine_loyer"
+    />
 </odoo>

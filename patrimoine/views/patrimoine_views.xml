@@ -15,8 +15,7 @@
                             <field name="utilisation"/>
                         </group>
                         <group>
-                            <field name="type"/>
-                            <field name="bien"/>
+                            <field name="type_bien"/>
                             <field name="consistance"/>
                             <field name="loyer_id"/>
                         </group>
@@ -31,7 +30,6 @@
                             <group>
                                 <field name="destination"/>
                                 <field name="adresse"/>
-                                <field name="prix"/>
                             </group>
                         </page>
                         <page string="Informations 2">
@@ -88,8 +86,7 @@
                 <field name="doc_source"/>
                 <field name="arrondissment"/>
                 <field name="utilisation"/>
-                <field name="type"/>
-                <field name="bien"/>
+                <field name="type_bien"/>
                 <field name="consistance"/>
                 <field name="loyer_id"/>
             </tree>
