@@ -69,7 +69,7 @@ class PatrimoineLoyer(models.Model):
     nature_exploitant = fields.Char('Nature exploitant')
     activite_exploitant = fields.Char('Activité exploitant')
     type_contrat = fields.Char('Type de contrat')
-    disponible = fields.Boolean('Dsiponible')
+    disponible = fields.Boolean('Disponible')
     date_contrat = fields.Char('Date contrat')
     duree_location = fields.Char('Durée de location')
     prix_loyer_num = fields.Float('Prix loyer numérique')
