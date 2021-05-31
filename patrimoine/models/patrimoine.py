@@ -5,6 +5,7 @@ from odoo import models, fields, api
 
 class PatrimoinePatrimoine(models.Model):
     _name = "patrimoine.patrimoine"
+    _inherit = ['mail.thread', 'mail.activity.mixin']
     _rec_name = "num_id"
 
     num_id = fields.Char('ID')
@@ -40,11 +41,15 @@ class PatrimoinePatrimoine(models.Model):
     utilisation = fields.Char('Utilisation')
     loyer_id = fields.Many2one('patrimoine.loyer', string="Détails sur le loyer")
     parent_id = fields.Many2one('patrimoine.patrimoine', string="Patrimoine Parent")
+    patri_latitude = fields.Float(string='Geo Latitude', digits=(16, 5))
+    patri_longitude = fields.Float(string='Geo Longitude', digits=(16, 5))
 
 
 class PatrimoineLoyer(models.Model):
     _name = "patrimoine.loyer"
+    _inherit = ['mail.thread', 'mail.activity.mixin']
 
+    state = fields.Selection([('libre', "Libre"), ('occupe', "Occupé")], string="État du loyer")
     name = fields.Char('ID')
     rc = fields.Char('RC')
     patente = fields.Char('Patente')

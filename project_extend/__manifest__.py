@@ -11,8 +11,10 @@
         'project',
     ],
     'data': [
+        'security/ir.model.access.csv',
         'security/groups.xml',
         'views/project_views.xml',
+        'views/task_views.xml',
     ],
     'installable': True,
     'auto_install': False,
