@@ -166,6 +166,34 @@
         <field name="view_mode">tree,form,google_map</field>
     </record>
 
+    <record id="view_patrimoine_search" model="ir.ui.view">
+        <field name="name">patrimoine.patrimoine.search</field>
+        <field name="model">patrimoine.patrimoine</field>
+        <field eval="3" name="priority"/>
+        <field name="arch" type="xml">
+            <search string="Patrimoines">
+                <field name="destination" filter_domain="[('destination', 'ilike', self)]" string="Destination"/>
+                <field name="arrondissment" filter_domain="[('arrondissment', 'ilike', self)]" string="Arrondissement"/>
+                <field name="num_id" string="ID"/>
+                <field name="consistance" string="Consistance"/>
+                <field name="adresse" string="Adresse"/>
+                <separator/>
+                <filter string="Loyer" name="doc_source_loyer" domain="[('doc_source','=','Loyer')]"/>
+                <filter string="Public" name="doc_source_public" domain="[('doc_source','=','Public')]"/>
+                <filter string="Privé" name="doc_source_prive" domain="[('doc_source','=','Privé')]"/>
+                <filter string="Souk" name="doc_source_souk" domain="[('doc_source','=','Souk')]"/>
+                <separator/>
+                <filter string="Bien Public" name="type_bien_public" domain="[('type_bien','=','ملك عام')]"/>
+                <filter string="Bien Privé" name="type_bien_prive" domain="[('type_bien','=','ملك خاص')]"/>
+                <separator/>
+                <group expand="0" string="Group By">
+                    <filter string="Consistance" name="by_consistance" domain="[]" context="{'group_by': 'consistance'}"/>
+                    <filter string="Arrondissement" name="by_arrondissment" domain="[]" context="{'group_by': 'arrondissment'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
     <menuitem name="Liste des patrimoines"
               id="patrimoine_patrimoine_menu_id"
               parent="project_extend.patrimoine_project_menu_item"

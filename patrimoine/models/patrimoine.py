@@ -10,7 +10,7 @@ class PatrimoinePatrimoine(models.Model):
 
     num_id = fields.Char('ID')
     doc_source = fields.Char('Document Source')
-    arrondissment = fields.Char('Arrondissement')
+    arrondissment = fields.Many2one('hr.department', 'Arrondissement')
     type_bien = fields.Char('Type du bien')
     consistance = fields.Char('Consistance')
     superficie = fields.Char('Superficie')

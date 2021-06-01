@@ -8,7 +8,7 @@
     'author': 'Osisoftware',
     'website': '',
     "depends": [
-        'project_extend', 'web_google_maps'
+        'project_extend', 'web_google_maps', 'hr'
     ],
     'data': [
         'security/ir.model.access.csv',
