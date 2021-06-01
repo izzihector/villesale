@@ -12,6 +12,8 @@
     ],
     'data': [
         'security/ir.model.access.csv',
+        'report/docs_admin_templates.xml',
+        'report/report.xml',
         'views/patrimoine_views.xml',
         'views/patrimoine_loyer_views.xml',
     ],

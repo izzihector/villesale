@@ -177,6 +177,7 @@
                 <field name="num_id" string="ID"/>
                 <field name="consistance" string="Consistance"/>
                 <field name="adresse" string="Adresse"/>
+                <field name="titre_date" string="Titre et date"/>
                 <separator/>
                 <filter string="Loyer" name="doc_source_loyer" domain="[('doc_source','=','Loyer')]"/>
                 <filter string="Public" name="doc_source_public" domain="[('doc_source','=','Public')]"/>
