@@ -104,7 +104,10 @@
         <field name="name">view.patrimoine.patrimoine.google_map</field>
         <field name="model">patrimoine.patrimoine</field>
         <field name="arch" type="xml">
-            <google_map class="o_patrimoine_patrimoine_map" string="Carte" lat="patri_latitude" lng="patri_longitude">
+            <google_map class="o_patrimoine_patrimoine_map" string="Carte"
+                        lat="patri_latitude"
+                        lng="patri_longitude"
+                        minZoom="30">
                 <field name="id"/>
                 <field name="patri_latitude"/>
                 <field name="patri_longitude"/>

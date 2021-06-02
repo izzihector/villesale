@@ -17,11 +17,14 @@ class ProjectTask(models.Model):
     etape_juridique_id = fields.Many2one('etape.juridique', stirng='Etape Juridique')
     tribunal_id = fields.Many2one('tribunal', stirng='Etape Juridique')
     resume = fields.Char('Résumé')
+    num_dossier = fields.Char('Numéro de dossier')
+    date_jugement = fields.Char('Date et jugement')
     avocat_id = fields.Many2one('res.partner', stirng='Avocat')
     defendeur = fields.Many2one('res.partner', stirng='Defendeur')
     demandeur = fields.Many2one('res.partner', stirng='Demandeur')
     annee = fields.Char('Année')
     id_affaire = fields.Char('ID Affaire')
+    department_id = fields.Many2one('hr.department', 'Arrondissment')
 
 
 class EtapeJuridique(models.Model):

@@ -10,9 +10,12 @@
                     <group>
                         <group>
                             <field name="id_affaire"/>
+                            <field name="num_dossier"/>
                             <field name="tribunal_id"/>
+                            <field name="department_id"/>
                             <field name="avocat_id"/>
                             <field name="resume"/>
+                            <field name="date_jugement"/>
                         </group>
                         <group>
                             <field name="demandeur"/>
@@ -39,6 +42,28 @@
               parent="project_extend.juridique_project_menu_item"
               groups="project_extend.groups_project_juridique"
     />
+
+    <record id="project_task_juri_view_search" model="ir.ui.view">
+        <field name="name">project.task.juri.search.inherit</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_search_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group" position="inside">
+                <filter string="Tribunal" name="by_tribunal" context="{'group_by': 'tribunal_id'}"/>
+                <filter string="Arrondissment" name="by_arrondissment" context="{'group_by': 'department_id'}"/>
+                <filter string="Avocat" name="by_avocat" context="{'group_by': 'avocat_id'}"/>
+                <filter string="Tâche Parente" name="by_parent_id" context="{'group_by': 'parent_id'}"/>
+            </xpath>
+            <field name="project_id" position="after">
+                <field name="num_dossier"/>
+                <field name="id_affaire"/>
+                <field name="avocat_id"/>
+                <field name="defendeur"/>
+                <field name="demandeur"/>
+
+            </field>
+        </field>
+    </record>
 
     <record id="open_view_tribunal" model="ir.actions.act_window">
         <field name="name">Tribunaux</field>
