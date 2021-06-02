@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_patrimoine_patrimoine,access_patrimoine_patrimoine user,model_patrimoine_patrimoine,base.group_user,1,1,1,1
+access_patrimoine_loyer,access_patrimoine_loyer user,model_patrimoine_loyer,base.group_user,1,1,1,1

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_edit_project_inherit_type_form" model="ir.ui.view">
+        <field name="name">project.project.view.type.inherit</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="project_type"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="open_view_project_juridique" model="ir.actions.act_window">
+        <field name="name">Affaires Juridiques et contentieux</field>
+        <field name="res_model">project.project</field>
+        <field name="domain">[('project_type', '=', 'juridique')]</field>
+        <field name="context">{'default_project_type': 'juridique'}</field>
+        <field name="view_mode">kanban,form</field>
+        <field name="view_id" ref="project.view_project_kanban"/>
+    </record>
+
+    <record id="open_view_project_patrimoine" model="ir.actions.act_window">
+        <field name="name">Gestion du Patrimoine</field>
+        <field name="res_model">project.project</field>
+        <field name="domain">[('project_type', '=', 'patrimoine')]</field>
+        <field name="context">{'default_project_type': 'patrimoine'}</field>
+        <field name="view_mode">kanban,form</field>
+        <field name="view_id" ref="project.view_project_kanban"/>
+    </record>
+
+    <menuitem name="Gestion des Affaires Juridiques et contentieux"
+              id="juridique_project_menu_item"
+              action="open_view_project_juridique"
+              web_icon="project_extend,static/description/juridique_icon.png"
+              groups="project_extend.groups_project_juridique"
+    />
+
+    <menuitem name="Gestion du Patrimoine"
+              id="patrimoine_project_menu_item"
+              action="open_view_project_patrimoine"
+              web_icon="project_extend,static/description/patrimoine_icon.png"
+              groups="project_extend.groups_project_patrimoine"
+    />
+
+</odoo>

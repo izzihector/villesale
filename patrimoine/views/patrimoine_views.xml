@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="patrimoine_patrimoine_form_view" model="ir.ui.view">
+        <field name="name">patrimoine.patrimoine.form.view</field>
+        <field name="model">patrimoine.patrimoine</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="num_id"/>
+                            <field name="parent_id"/>
+                            <field name="doc_source"/>
+                            <field name="arrondissment"/>
+                            <field name="utilisation"/>
+                        </group>
+                        <group>
+                            <field name="type_bien"/>
+                            <field name="consistance"/>
+                            <field name="loyer_id"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Informations 1">
+                            <group>
+                                <field name="superficie"/>
+                                <field name="superficie_num"/>
+                                <field name="source"/>
+                            </group>
+                            <group>
+                                <field name="destination"/>
+                                <field name="adresse"/>
+                            </group>
+                        </page>
+                        <page string="Informations 2">
+                            <group>
+                                <field name="prix_acquisition"/>
+                                <field name="prix_acquisition_num"/>
+                                <field name="titre_date"/>
+                            </group>
+                            <group>
+                                <field name="reference"/>
+                                <field name="reference_vente"/>
+                                <field name="prix_vente"/>
+                            </group>
+                        </page>
+                        <page string="Informations 3">
+                            <group>
+                                <field name="date_contrat"/>
+                                <field name="nom_exploitant"/>
+                                <field name="duree_exploitation"/>
+                            </group>
+                            <group>
+                                <field name="frequence_loyer"/>
+                                <field name="prix_loyer"/>
+                                <field name="prix_loyer_annuel"/>
+                            </group>
+                        </page>
+                        <page string="Informations 4">
+                            <group>
+                                <field name="remarque"/>
+                                <field name="type_foncier"/>
+                                <field name="type_location"/>
+                                <field name="bis"/>
+                            </group>
+                            <group>
+                                <field name="etage"/>
+                                <field name="type_2"/>
+                                <field name="numero"/>
+                                <field name="etat_actuel"/>
+                            </group>
+                        </page>
+                        <page string="Assigned Partner" name="assigned_partner" groups="sales_team.group_sale_salesman">
+                            <group col="3">
+                                <label for="patri_latitude" string="Geolocation"/>
+                                <div class="o_row">
+                                    <span class="oe_grey">(</span>
+                                    <field name="patri_latitude"/>
+                                    <span class="oe_grey" attrs="{'invisible':[('patri_latitude','&lt;=',0)]}">N
+                                    </span>
+                                    <span class="oe_grey" attrs="{'invisible':[('patri_latitude','&gt;=',0)]}">S
+                                    </span>
+                                    <field name="patri_longitude"/>
+                                    <span class="oe_grey" attrs="{'invisible':[('patri_longitude','&lt;=',0)]}">E
+                                    </span>
+                                    <span class="oe_grey" attrs="{'invisible':[('patri_longitude','&gt;=',0)]}">W
+                                    </span>
+                                    <span class="oe_grey">)</span>
+                                </div>
+                            </group>
+                        </page>
+                    </notebook>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_patrimoine_patrimoine_google_map" model="ir.ui.view">
+        <field name="name">view.patrimoine.patrimoine.google_map</field>
+        <field name="model">patrimoine.patrimoine</field>
+        <field name="arch" type="xml">
+            <google_map class="o_patrimoine_patrimoine_map" string="Carte"
+                        lat="patri_latitude"
+                        lng="patri_longitude"
+                        minZoom="30">
+                <field name="id"/>
+                <field name="patri_latitude"/>
+                <field name="patri_longitude"/>
+                <field name="arrondissment"/>
+                <field name="consistance"/>
+                <field name="source"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click o_kanban_record_has_image_fill o_res_partner_kanban">
+                            <div class="oe_kanban_details">
+                                <strong class="o_kanban_record_title oe_partner_heading">
+                                    <field name="doc_source"/>
+                                </strong>
+                                <div class="o_kanban_tags_section oe_kanban_partner_categories"/>
+                                <ul>
+                                    <li t-if="record.arrondissment">
+                                        <field name="arrondissment"/>
+                                    </li>
+                                    <li t-if="record.type_bien">
+                                        <field name="type_bien"/>
+                                    </li>
+                                    <li t-if="record.consistance">
+                                        <field name="consistance"/>
+                                    </li>
+                                    <li t-if="record.source">
+                                        <field name="source"/>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </google_map>
+        </field>
+    </record>
+
+
+    <record id="patrimoine_patrimoine_tree_view" model="ir.ui.view">
+        <field name="name">patrimoine.patrimoine.tree.view</field>
+        <field name="model">patrimoine.patrimoine</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="num_id"/>
+                <field name="doc_source"/>
+                <field name="arrondissment"/>
+                <field name="utilisation"/>
+                <field name="type_bien"/>
+                <field name="consistance"/>
+                <field name="loyer_id"/>
+                <field name="destination"/>
+                <field name="parent_id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_patrimoine_patrimoine" model="ir.actions.act_window">
+        <field name="name">Liste des Patrimoines</field>
+        <field name="res_model">patrimoine.patrimoine</field>
+        <field name="view_mode">tree,form,google_map</field>
+    </record>
+
+    <record id="view_patrimoine_search" model="ir.ui.view">
+        <field name="name">patrimoine.patrimoine.search</field>
+        <field name="model">patrimoine.patrimoine</field>
+        <field eval="3" name="priority"/>
+        <field name="arch" type="xml">
+            <search string="Patrimoines">
+                <field name="destination" filter_domain="[('destination', 'ilike', self)]" string="Destination"/>
+                <field name="arrondissment" filter_domain="[('arrondissment', 'ilike', self)]" string="Arrondissement"/>
+                <field name="num_id" string="ID"/>
+                <field name="consistance" string="Consistance"/>
+                <field name="adresse" string="Adresse"/>
+                <field name="titre_date" string="Titre et date"/>
+                <separator/>
+                <filter string="Loyer" name="doc_source_loyer" domain="[('doc_source','=','Loyer')]"/>
+                <filter string="Public" name="doc_source_public" domain="[('doc_source','=','Public')]"/>
+                <filter string="Privé" name="doc_source_prive" domain="[('doc_source','=','Privé')]"/>
+                <filter string="Souk" name="doc_source_souk" domain="[('doc_source','=','Souk')]"/>
+                <separator/>
+                <filter string="Bien Public" name="type_bien_public" domain="[('type_bien','=','ملك عام')]"/>
+                <filter string="Bien Privé" name="type_bien_prive" domain="[('type_bien','=','ملك خاص')]"/>
+                <separator/>
+                <group expand="0" string="Group By">
+                    <filter string="Consistance" name="by_consistance" domain="[]" context="{'group_by': 'consistance'}"/>
+                    <filter string="Arrondissement" name="by_arrondissment" domain="[]" context="{'group_by': 'arrondissment'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <menuitem name="Liste des patrimoines"
+              id="patrimoine_patrimoine_menu_id"
+              parent="project_extend.patrimoine_project_menu_item"
+              action="action_patrimoine_patrimoine"
+    />
+</odoo>

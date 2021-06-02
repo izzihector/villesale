@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="hr_employee_view_form_inherit_fr_name" model="ir.ui.view">
+        <field name="name">hr.employee.view.form.fr.name</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@class='oe_title']/h1" position="after">
+                <h2>
+                    <field name="french_name" placeholder="Nom en Français"/>
+                </h2>
+                <h2>
+                    <field name="ppr" placeholder="PPR"/>
+                </h2>
+            </xpath>
+            <field name="identification_id" position="after">
+                <field name="cin"/>
+            </field>
+            <field name="work_location" position="after">
+                <field name="position_id"/>
+                <field name="mission"/>
+            </field>
+            <field name="certificate" position="after">
+                <field name="diploma_type"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="hr_department_view_form_inherit_fr_name" model="ir.ui.view">
+        <field name="name">hr.department.view.form.fr.name</field>
+        <field name="model">hr.department</field>
+        <field name="inherit_id" ref="hr.view_department_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="french_name" placeholder="Nom en Français"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="hr_job_view_form_inherit_name" model="ir.ui.view">
+        <field name="name">hr.job.view.form.fr.name</field>
+        <field name="model">hr.job</field>
+        <field name="inherit_id" ref="hr.view_hr_job_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="french_name" placeholder="Nom en Français"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="hr_employee_view_kanban_fr_name" model="ir.ui.view">
+        <field name="name">hr.employee.view.kanban.fr.name</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.hr_kanban_view_employees"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="french_name" placeholder="Nom en Français"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="hr_employee_view_tree_fr_name" model="ir.ui.view">
+        <field name="name">hr.employee.view.tree.fr.name</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="french_name" placeholder="Nom en Français"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="hr_employee_view_search_hr_name" model="ir.ui.view">
+        <field name="name">hr.employee.search.view.fr.name</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="french_name" string="Nom en Français" />
+            </xpath>
+        </field>
+    </record>
+</odoo>
