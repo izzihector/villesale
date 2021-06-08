@@ -13,6 +13,7 @@ class ProjectProject(models.Model):
 class ProjectTask(models.Model):
     _inherit = 'project.task'
 
+    project_type = fields.Selection(related='project_id.project_type', string='Type de projet')
     remarque = fields.Char('Remarque')
     etape_juridique_id = fields.Many2one('etape.juridique', stirng='Etape Juridique')
     tribunal_id = fields.Many2one('tribunal', stirng='Etape Juridique')
@@ -22,9 +23,11 @@ class ProjectTask(models.Model):
     avocat_id = fields.Many2one('res.partner', stirng='Avocat')
     defendeur = fields.Many2one('res.partner', stirng='Defendeur')
     demandeur = fields.Many2one('res.partner', stirng='Demandeur')
+    nature = fields.Selection([('normal', 'عادي'), ('urgent', 'استعجالي')], stirng='Nature')
     annee = fields.Char('Année')
     id_affaire = fields.Char('ID Affaire')
-    department_id = fields.Many2one('hr.department', 'Arrondissment')
+    department_id = fields.Many2one('hr.department', 'Affectation')
+    type_affaire = fields.Selection([('AT', 'AT')], string="Type d'affaire")
 
 
 class EtapeJuridique(models.Model):
