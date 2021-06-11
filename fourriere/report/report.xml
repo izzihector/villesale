@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <report
+        id="report_patrimoine"
+        string="Fiche Patrimoine"
+        model="patrimoine.patrimoine"
+        report_type="qweb-pdf"
+        paperformat="base.paperformat_euro"
+        name="patrimoine.report_patrimoine_patrimoine"
+        file="patrimoine.report_patrimoine_patrimoine"
+        menu="True"
+    />
+
+</odoo>

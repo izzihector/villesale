@@ -6,7 +6,8 @@
         <field name="inherit_id" ref="project.view_task_form2"/>
         <field name="arch" type="xml">
             <xpath expr="//notebook" position="inside">
-                <page string="Contencieux">
+                <field name="project_type" invisible="1"/>
+                <page string="Contencieux" attrs="{'invisible': [('project_type', '!=', 'juridique')]}">
                     <group>
                         <group>
                             <field name="id_affaire"/>
@@ -22,6 +23,8 @@
                             <field name="defendeur"/>
                             <field name="annee"/>
                             <field name="remarque"/>
+                            <field name="nature"/>
+                            <field name="type_affaire"/>
                             <field name="etape_juridique_id"/>
                         </group>
                     </group>

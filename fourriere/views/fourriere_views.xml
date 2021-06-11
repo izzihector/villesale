@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="fourriere_fourriere_form_view" model="ir.ui.view">
+        <field name="name">fourriere.fourriere.form.view</field>
+        <field name="model">fourriere.fourriere</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_en_cours" states="nouveau" string="Valider" type="object"
+                            class="oe_highlight"/>
+                    <button name="action_sortit" states="en_cours" string="Sortir" type="object"
+                            class="oe_highlight"/>
+                    <field name="state" widget="statusbar" readonly="0"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="ordonnateur_id"/>
+                            <field name="emplacement_id"/>
+                            <field name="type_entrant"/>
+                            <field name="num_entrant"/>
+                        </group>
+                        <group>
+                            <field name="date_in"/>
+                            <field name="date_out" states="sortit"/>
+                            <field name="marque"/>
+                            <field name="duree"/>
+                            <field name="cout"/>
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+
+    <record id="fourriere_fourriere_tree_view" model="ir.ui.view">
+        <field name="name">fourriere.fourriere.tree.view</field>
+        <field name="model">fourriere.fourriere</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="ordonnateur_id"/>
+                <field name="emplacement_id"/>
+                <field name="type_entrant"/>
+                <field name="num_entrant"/>
+                <field name="marque"/>
+                <field name="duree"/>
+                <field name="cout"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_fourriere_fourriere" model="ir.actions.act_window">
+        <field name="name">Liste des Entrants</field>
+        <field name="res_model">fourriere.fourriere</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <record id="view_fourriere_search" model="ir.ui.view">
+        <field name="name">fourriere.fourriere.search</field>
+        <field name="model">fourriere.fourriere</field>
+        <field eval="3" name="priority"/>
+        <field name="arch" type="xml">
+            <search string="Fourrières">
+                <field name="name" filter_domain="[('name', 'ilike', self)]" string="Numéro"/>
+                <field name="ordonnateur_id" filter_domain="[('ordonnateur_id', 'ilike', self)]" string="Ordonnateur"/>
+                <field name="emplacement_id" string="Emplacement"/>
+                <field name="num_entrant" string="Numéro d'entrant"/>
+                <separator/>
+                <filter string="Voiture" name="type_voiture" domain="[('type_entrant','ilike','voiture')]"/>
+                <filter string="Moto" name="type_moto" domain="[('type_entrant','ilike','moto')]"/>
+                <filter string="Bête" name="type_bete" domain="[('type_entrant','ilike','bête')]"/>
+                <separator/>
+                <group expand="0" string="Group By">
+                    <filter string="Ordonnateur" name="by_ordonnateur" domain="[]"
+                            context="{'group_by': 'ordonnateur_id'}"/>
+                    <filter string="Emplacement" name="by_emplacement" domain="[]"
+                            context="{'group_by': 'emplacement_id'}"/>
+                    <filter string="Type d'entrant" name="by_type_entrant" domain="[]"
+                            context="{'group_by': 'type_entrant'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <menuitem name="Fourrière"
+              id="fourriere_fourriere_menu_id"
+              action="action_fourriere_fourriere"
+              web_icon="fourriere,static/description/icon.png"
+    />
+</odoo>
