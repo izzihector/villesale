@@ -24,6 +24,7 @@ class FourriereFourriere(models.Model):
     @api.depends('type_entrant', 'date_in')
     def _compute_duree_cout(self):
         for rec in self:
+            rec.cout = 0
             rec.duree = (datetime.today() - rec.date_in).days
             if rec.type_entrant:
                 rec.cout = rec.duree * rec.type_entrant.cout
