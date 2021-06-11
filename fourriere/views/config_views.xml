@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="fourriere_ordonnateur_form_view" model="ir.ui.view">
+        <field name="name">fourriere.ordonnateur.form.view</field>
+        <field name="model">fourriere.ordonnateur</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="fourriere_ordonnateur_tree_view" model="ir.ui.view">
+        <field name="name">fourriere.ordonnateur.tree.view</field>
+        <field name="model">fourriere.ordonnateur</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="fourriere_marque_form_view" model="ir.ui.view">
+        <field name="name">fourriere.marque.form.view</field>
+        <field name="model">fourriere.marque</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="fourriere_marque_tree_view" model="ir.ui.view">
+        <field name="name">fourriere.marque.tree.view</field>
+        <field name="model">fourriere.marque</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="fourriere_ordonnateur_emplacement_tree_view" model="ir.ui.view">
+        <field name="name">fourriere.ordonnateur.emplacement.tree.view</field>
+        <field name="model">fourriere.ordonnateur.emplacement</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="fourriere_ordonnateur_emplacement_form_view" model="ir.ui.view">
+        <field name="name">fourriere.ordonnateur.emplacement.form.view</field>
+        <field name="model">fourriere.ordonnateur.emplacement</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="fourriere_entrant_form_view" model="ir.ui.view">
+        <field name="name">fourriere.entrant.form.view</field>
+        <field name="model">fourriere.entrant</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="cout"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="fourriere_entrant_tree_view" model="ir.ui.view">
+        <field name="name">fourriere.entrant.tree.view</field>
+        <field name="model">fourriere.entrant</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="cout"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_fourriere_ordonnateur" model="ir.actions.act_window">
+        <field name="name">Ordonnateurs</field>
+        <field name="res_model">fourriere.ordonnateur</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="Configuration"
+              id="fourriere_config_menu_id"
+              parent="fourriere.fourriere_fourriere_menu_id"
+              action="action_fourriere_ordonnateur"
+    />
+
+    <menuitem name="Ordonnateur"
+              id="fourriere_ordonnateur_menu_id"
+              parent="fourriere_config_menu_id"
+              action="action_fourriere_ordonnateur"
+    />
+
+    <record id="action_fourriere_marque" model="ir.actions.act_window">
+        <field name="name">Marques</field>
+        <field name="res_model">fourriere.marque</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="Marque"
+              id="fourriere_marque_menu_id"
+              parent="fourriere_config_menu_id"
+              action="action_fourriere_marque"
+    />
+
+    <record id="action_fourriere_ordonnateur_emplacement" model="ir.actions.act_window">
+        <field name="name">Emplacement Ordonnateur</field>
+        <field name="res_model">fourriere.ordonnateur.emplacement</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="Emplacement Ordonnateur"
+              id="fourriere_ordonnateur_emplacement_menu_id"
+              parent="fourriere_config_menu_id"
+              action="action_fourriere_ordonnateur_emplacement"
+    />
+
+    <record id="action_fourriere_type_entrant" model="ir.actions.act_window">
+        <field name="name">Types d'entrants</field>
+        <field name="res_model">fourriere.entrant</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem name="Type d'entrant"
+              id="fourriere_entrant_menu_id"
+              parent="fourriere_config_menu_id"
+              action="action_fourriere_type_entrant"
+    />
+</odoo>
