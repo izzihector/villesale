@@ -13,21 +13,29 @@
                     <field name="state" widget="statusbar" readonly="1"/>
                 </header>
                 <sheet>
-                    <group>
-                        <group>
+                    <div class="oe_title">
+                        <h1>
                             <field name="name"/>
-                            <field name="ordonnateur_id"/>
-                            <field name="emplacement_id"/>
-                            <field name="type_entrant"/>
-                            <field name="num_entrant"/>
+                        </h1>
+                    </div>
+                    <group attrs="{'readonly': [('state', '=', 'sortit')]}">
+                        <group>
+                            <field name="ordonnateur_id" attrs="{'readonly': [('state', '=', 'sortit')]}"/>
+                            <field name="emplacement_id" attrs="{'readonly': [('state', '=', 'sortit')]}"/>
+                            <field name="num_entrant" attrs="{'readonly': [('state', '=', 'sortit')]}"/>
+                            <field name="type_entrant" attrs="{'readonly': [('state', '=', 'sortit')]}"/>
+                            <field name="marque" attrs="{'readonly': [('state', '=', 'sortit')]}"/>
                         </group>
                         <group>
-                            <field name="date_in"/>
-                            <field name="date_out" states="sortit"/>
-                            <field name="marque"/>
-                            <field name="duree"/>
-                            <field name="cout"/>
+                            <field name="date_in" attrs="{'readonly': [('state', '=', 'sortit')]}"/>
+                            <field name="duree" readonly="1"/>
+                            <field name="cout" readonly="1"/>
                         </group>
+                    </group>
+                    <group string="Quitance" states="sortit">
+                        <field name="date_out" attrs="{'readonly': [('state', '=', 'sortit')]}"/>
+                        <field name="num_quitance" attrs="{'readonly': [('state', '=', 'sortit')]}"/>
+                        <field name="doc_quitance" attrs="{'readonly': [('state', '=', 'sortit')]}"/>
                     </group>
                 </sheet>
                 <div class="oe_chatter">
@@ -53,6 +61,8 @@
                 <field name="marque"/>
                 <field name="duree"/>
                 <field name="cout"/>
+                <field name="date_out"/>
+                <field name="num_quitance"/>
             </tree>
         </field>
     </record>
