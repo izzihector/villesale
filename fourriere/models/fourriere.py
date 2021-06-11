@@ -9,7 +9,7 @@ class FourriereFourriere(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
     state = fields.Selection([('nouveau', "Nouveau"), ('en_cours', "En cours"), ('sortit', "Sortit")],
-                             string="État")
+                             string="État", default="nouveau")
     date_in = fields.Datetime('Date entrée', default=fields.Datetime.today())
     date_out = fields.Datetime('Date sortie')
     name = fields.Char('Numéro')

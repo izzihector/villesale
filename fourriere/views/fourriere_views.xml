@@ -10,7 +10,7 @@
                             class="oe_highlight"/>
                     <button name="action_sortit" states="en_cours" string="Sortir" type="object"
                             class="oe_highlight"/>
-                    <field name="state" widget="statusbar" readonly="0"/>
+                    <field name="state" widget="statusbar" readonly="1"/>
                 </header>
                 <sheet>
                     <group>
