@@ -12,20 +12,31 @@ class FourriereFourriere(models.Model):
                              string="État", default="nouveau")
     date_in = fields.Datetime('Date entrée', default=fields.Datetime.today())
     date_out = fields.Datetime('Date sortie')
-    name = fields.Char('Numéro')
+    name = fields.Char('Numéro', readonly=True)
     ordonnateur_id = fields.Many2one('fourriere.ordonnateur', 'Ordonnateur')
     emplacement_id = fields.Many2one('fourriere.ordonnateur.emplacement', 'Emplacement')
     type_entrant = fields.Many2one('fourriere.entrant', 'Type d\'entrant')
     num_entrant = fields.Char('Numéro d\'entrant')
+    num_quitance = fields.Char('Numéro de quitance')
     marque = fields.Many2one('fourriere.marque', 'Marque')
     duree = fields.Float('Durée en jours', compute='_compute_duree_cout')
     cout = fields.Float('Coût en Dirham', compute='_compute_duree_cout')
+    doc_quitance = fields.Binary('Document de quitance')
+
+    @api.model
+    def create(self, vals):
+        vals['name'] = self.env['ir.sequence'].next_by_code('fourriere.fourriere')
+        return super(FourriereFourriere, self).create(vals)
 
     @api.depends('type_entrant', 'date_in')
     def _compute_duree_cout(self):
         for rec in self:
             rec.cout = 0
-            rec.duree = (datetime.today() - rec.date_in).days
+            rec.duree = 0
+            if rec.date_out:
+                rec.duree = (rec.date_out - rec.date_in).days
+            else:
+                rec.duree = (datetime.today() - rec.date_in).days
             if rec.type_entrant:
                 rec.cout = rec.duree * rec.type_entrant.cout
 
@@ -35,10 +46,7 @@ class FourriereFourriere(models.Model):
         })
 
     def action_sortit(self):
-        self.write({
-            'date_out': datetime.today(),
-            'state': 'sortit'
-        })
+        return self.env.ref('fourriere.quitance_wizard_action').sudo().read()[0]
 
 
 class FourriereOrdonnateur(models.Model):

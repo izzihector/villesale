@@ -11,11 +11,13 @@
         'mail'
     ],
     'data': [
+        'data/data.xml',
         'security/ir.model.access.csv',
         # 'report/docs_admin_templates.xml',
         # 'report/report.xml',
         'views/fourriere_views.xml',
         'views/config_views.xml',
+        'wizard/quitance_wizard.xml',
     ],
     'installable': True,
     'auto_install': False,

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="wizard_quitance" model="ir.ui.view">
+            <field name="name">Quitance</field>
+            <field name="model">quitance.wizard</field>
+            <field name="arch" type="xml">
+                <form string="Quitance">
+                    <group>
+                        <field name="num_quitance"/>
+                        <field name="date_quitance"/>
+                        <field name="doc_quitance"/>
+                    </group>
+                    <footer>
+                        <button name="act_validate" string="Valider" type="object" class="btn-primary"/>
+                        <button special="cancel" string="Annuler" type="object" class="btn-secondary"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="quitance_wizard_action" model="ir.actions.act_window">
+            <field name="name">Quitance</field>
+            <field name="res_model">quitance.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+    </data>
+</odoo>

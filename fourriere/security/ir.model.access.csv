@@ -4,3 +4,4 @@ access_fourriere_ordonnateur,access_fourriere_ordonnateur user,model_fourriere_o
 access_fourriere_marque,access_fourriere_marque user,model_fourriere_marque,base.group_user,1,1,1,1
 access_fourriere_ordonnateur_emplacement,access_ordonnateur_emplacement user,model_fourriere_ordonnateur_emplacement,base.group_user,1,1,1,1
 access_fourriere_entrant,access_fourriere_entrant user,model_fourriere_entrant,base.group_user,1,1,1,1
+access_quitance_wizard,access_quitance_wizard user,model_quitance_wizard,base.group_user,1,1,1,1

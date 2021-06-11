@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="seq_fourriere_fourriere" model="ir.sequence">
+        <field name="name">Séquence fourrière</field>
+        <field name="code">fourriere.fourriere</field>
+        <field name="prefix">MEF-</field>
+        <field name="padding">4</field>
+    </record>
+
+</odoo>
