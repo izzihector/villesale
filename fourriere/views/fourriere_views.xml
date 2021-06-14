@@ -29,6 +29,7 @@
                         <group>
                             <field name="date_in" attrs="{'readonly': [('state', '=', 'sortit')]}"/>
                             <field name="duree" readonly="1"/>
+                            <field name="excede_duree" readonly="1" invisible="1"/>
                             <field name="cout" readonly="1"/>
                         </group>
                     </group>
@@ -52,7 +53,7 @@
         <field name="name">fourriere.fourriere.tree.view</field>
         <field name="model">fourriere.fourriere</field>
         <field name="arch" type="xml">
-            <tree>
+            <tree decoration-danger="excede_duree == True">
                 <field name="name"/>
                 <field name="ordonnateur_id"/>
                 <field name="emplacement_id"/>
@@ -63,6 +64,8 @@
                 <field name="cout"/>
                 <field name="date_out"/>
                 <field name="num_quitance"/>
+                <field name="excede_duree" invisible="1"/>
+                <field name="state"/>
             </tree>
         </field>
     </record>
@@ -83,6 +86,11 @@
                 <field name="ordonnateur_id" filter_domain="[('ordonnateur_id', 'ilike', self)]" string="Ordonnateur"/>
                 <field name="emplacement_id" string="Emplacement"/>
                 <field name="num_entrant" string="Numéro d'entrant"/>
+                <separator/>
+                <filter string="Nouveau" name="filter_nouveau" domain="[('state','=','nouveau')]"/>
+                <filter string="En cours" name="filter_en_cours" domain="[('state','=','en_cours')]"/>
+                <filter string="Dépassement" name="filter_depassement" domain="[('state','=','depassement')]"/>
+                <filter string="Sortie" name="filter_sortit" domain="[('state','=','sortit')]"/>
                 <separator/>
                 <filter string="Voiture" name="type_voiture" domain="[('type_entrant','ilike','voiture')]"/>
                 <filter string="Moto" name="type_moto" domain="[('type_entrant','ilike','moto')]"/>
