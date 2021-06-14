@@ -83,10 +83,10 @@
         <field eval="3" name="priority"/>
         <field name="arch" type="xml">
             <search string="Fourrières">
+                <field name="num_entrant" string="Numéro d'entrant"/>
                 <field name="name" filter_domain="[('name', 'ilike', self)]" string="Numéro"/>
                 <field name="ordonnateur_id" filter_domain="[('ordonnateur_id', 'ilike', self)]" string="Ordonnateur"/>
                 <field name="emplacement_id" string="Emplacement"/>
-                <field name="num_entrant" string="Numéro d'entrant"/>
                 <separator/>
                 <filter string="Nouveau" name="filter_nouveau" domain="[('state','=','nouveau')]"/>
                 <filter string="En cours" name="filter_en_cours" domain="[('state','=','en_cours')]"/>
