@@ -14,6 +14,8 @@
         'data/data.xml',
         'security/groups.xml',
         'security/ir.model.access.csv',
+        'report/docs_admin_templates.xml',
+        'report/report.xml',
         # 'report/docs_admin_templates.xml',
         # 'report/report.xml',
         'views/fourriere_views.xml',

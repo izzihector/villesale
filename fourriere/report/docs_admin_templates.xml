@@ -1,125 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <data>
-        <template id="report_patrimoine_template">
+        <template id="report_fourriere_template">
             <t t-call="web.html_container">
                 <t t-foreach="docs" t-as="doc">
-                    <t t-call="web.external_layout">
-                        <div class="page" dir="RTL">
-                            <style>
-                                td{
-                                text-align: right;
-                                border:1px solid black;
-                                padding: 3px;
-                                }
-                            </style>
-                            <table width="100%" style="border:1px solid black;">
-                                <tr>
-                                    <td>ثمن التفويت</td>
-                                    <td>
-                                        <t t-esc="doc.prix_vente"/>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>تاريخ ورقة العقد أو تاريخ ورقم قرار الإحتلال المؤقت</td>
-                                    <td>
-                                        <t t-esc="doc.date_contrat"/>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>إسم المكتري أو المستغل</td>
-                                    <td>
-                                        <t t-esc="doc.nom_exploitant"/>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>مدة الكراء أو مدة الإحتلال المؤقت</td>
-                                    <td>
-                                        <t t-esc="doc.duree_exploitation"/>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>تاريخ أداء واجب الإحتلال المؤقت</td>
-                                    <td>
-                                        <t t-esc="doc.prix_loyer"/>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>ملاحظات</td>
-                                    <td>
-                                        <t t-esc="doc.remarque"/>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>رقم التقييد في الدفتر</td>
-                                    <td>
-                                        <t t-esc="doc.num_id"/>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>النوع</td>
-                                    <td>
-                                        <t t-esc="doc.consistance"/>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>المصدر</td>
-                                    <td>
-                                        <t t-esc="doc.source"/>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>المساحة</td>
-                                    <td>
-                                        <t t-esc="doc.superficie"/>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>الموقع</td>
-                                    <td>
-                                        <t t-esc="doc.adresse"/>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>ثمن الإقتناء</td>
-                                    <td>
-                                        <t t-esc="doc.prix_acquisition"/>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>رقم الرسم العقاري وتاريخ تسجيله بإدارة المحافظة</td>
-                                    <td>
-                                        <t t-esc="doc.titre_date"/>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>المرجع وتاريخ تسجيله بإدارة التسجيل</td>
-                                    <td>
-                                        <t t-esc="doc.reference"/>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>التخصيص</td>
-                                    <td>
-                                        <t t-esc="doc.destination"/>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>المرجع وتاريخ خروج الملك في حالة بيع أو تبادل أو إنجاز تجزئة به</td>
-                                    <td>
-                                        <t t-esc="doc.reference_vente"/>
-                                    </td>
-                                </tr>
-                            </table>
-                        </div>
-                    </t>
+
+                    <tr>
+                        <td>
+                            <t t-esc="doc.name"/>
+                        </td>
+                        <td>
+                            <t t-if="doc.type_entrant" t-esc="doc.type_entrant.name"/>
+                        </td>
+                        <td>
+                            <t t-esc="doc.num_entrant"/>
+                        </td>
+                        <td>
+                            <t t-esc="doc.date_in"/>
+                        </td>
+                        <td>
+                            <t t-if="doc.ordonnateur_id" t-esc="doc.ordonnateur_id.name"/>
+                            <t t-if="doc.emplacement_id" t-esc="doc.emplacement_id.name"/>
+                        </td>
+                    </tr>
+
                 </t>
             </t>
         </template>
 
-        <template id="report_patrimoine_patrimoine">
+        <template id="report_fourriere_fourriere">
             <t t-call="web.html_container">
-                <t t-call="patrimoine.report_patrimoine_template"/>
+                <t t-call="web.external_layout">
+                    <div class="page" dir="RTL">
+                        <style>
+                            td, th{
+                            text-align: center;
+                            border:1px solid black;
+                            padding: 3px;
+                            }
+                        </style>
+                        <h2 style="text-align:center;margin-bottom:20px;">
+                            السيارات المودعة بالمحجز الجماعي سلا
+                        </h2>
+                        <table width="100%" style="border:1px solid black;">
+                            <thead>
+                                <th class="text-center">
+                                    الرقم الترتيبي
+                                </th>
+                                <th class="text-center">
+                                    نوع المحجوز
+                                </th>
+                                <th class="text-center">
+                                    رقم اللوحة المعدنية
+                                </th>
+                                <th class="text-center">
+                                    تاريخ الإيداع بالمحجز
+                                </th>
+                                <th class="text-center">
+                                    الجهة المسؤولة عن الحجز
+                                </th>
+                            </thead>
+                            <tbody>
+                                <t t-call="fourriere.report_fourriere_template"/>
+                            </tbody>
+                        </table>
+                    </div>
+                </t>
             </t>
         </template>
     </data>
