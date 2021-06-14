@@ -8,7 +8,7 @@
                 <header>
                     <button name="action_en_cours" states="nouveau" string="Valider" type="object"
                             class="oe_highlight"/>
-                    <button name="action_sortit" states="en_cours" string="Sortir" type="object"
+                    <button name="action_sortit" states="en_cours,depassement" string="Sortir" type="object"
                             class="oe_highlight"/>
                     <field name="state" widget="statusbar" readonly="1"/>
                 </header>
@@ -20,14 +20,15 @@
                     </div>
                     <group attrs="{'readonly': [('state', '=', 'sortit')]}">
                         <group>
-                            <field name="ordonnateur_id" attrs="{'readonly': [('state', '=', 'sortit')]}"/>
-                            <field name="emplacement_id" attrs="{'readonly': [('state', '=', 'sortit')]}"/>
-                            <field name="num_entrant" attrs="{'readonly': [('state', '=', 'sortit')]}"/>
-                            <field name="type_entrant" attrs="{'readonly': [('state', '=', 'sortit')]}"/>
-                            <field name="marque" attrs="{'readonly': [('state', '=', 'sortit')]}"/>
+                            <field name="ordonnateur_id" attrs="{'readonly': [('state', '=', 'sortit')]}" options="{'no_open': True, 'no_create_edit': True}"/>
+                            <field name="emplacement_id" attrs="{'readonly': [('state', '=', 'sortit')]}" options="{'no_open': True, 'no_create_edit': True}"/>
+                            <field name="num_entrant" attrs="{'readonly': [('state', '=', 'sortit')]}" options="{'no_open': True, 'no_create_edit': True}"/>
+                            <field name="type_entrant" attrs="{'readonly': [('state', '=', 'sortit')]}" options="{'no_open': True, 'no_create_edit': True}"/>
+                            <field name="marque" attrs="{'readonly': [('state', '=', 'sortit')]}" options="{'no_open': True, 'no_create_edit': True}"/>
                         </group>
                         <group>
                             <field name="date_in" attrs="{'readonly': [('state', '=', 'sortit')]}"/>
+                            <field name="doc_mef" />
                             <field name="duree" readonly="1"/>
                             <field name="excede_duree" readonly="1" invisible="1"/>
                             <field name="cout" readonly="1"/>
@@ -53,7 +54,7 @@
         <field name="name">fourriere.fourriere.tree.view</field>
         <field name="model">fourriere.fourriere</field>
         <field name="arch" type="xml">
-            <tree decoration-danger="excede_duree == True">
+            <tree decoration-danger="state == 'depassement'">
                 <field name="name"/>
                 <field name="ordonnateur_id"/>
                 <field name="emplacement_id"/>
