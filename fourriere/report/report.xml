@@ -2,13 +2,13 @@
 <odoo>
 
     <report
-        id="report_patrimoine"
-        string="Fiche Patrimoine"
-        model="patrimoine.patrimoine"
+        id="report_fourriere"
+        string="Fiche Fourrière"
+        model="fourriere.fourriere"
         report_type="qweb-pdf"
         paperformat="base.paperformat_euro"
-        name="patrimoine.report_patrimoine_patrimoine"
-        file="patrimoine.report_patrimoine_patrimoine"
+        name="fourriere.report_fourriere_fourriere"
+        file="fourriere.report_fourriere_fourriere"
         menu="True"
     />
 
