@@ -81,6 +81,7 @@
                     <group>
                         <field name="name"/>
                         <field name="cout"/>
+                        <field name="max"/>
                     </group>
                 </sheet>
             </form>
@@ -94,6 +95,7 @@
             <tree>
                 <field name="name"/>
                 <field name="cout"/>
+                <field name="max"/>
             </tree>
         </field>
     </record>
