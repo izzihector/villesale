@@ -8,7 +8,7 @@ class FourriereFourriere(models.TransientModel):
     _name = "quitance.wizard"
 
     num_quitance = fields.Char('Numéro de quitance')
-    date_quitance = fields.Date('Date quitance')
+    date_quitance = fields.Date('Date quitance', default=fields.Datetime.today())
     doc_quitance = fields.Binary('Document de quitance')
 
     def act_validate(self):

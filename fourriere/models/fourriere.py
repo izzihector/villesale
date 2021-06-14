@@ -27,6 +27,7 @@ class FourriereFourriere(models.Model):
     excede_duree = fields.Boolean('A éxcédé la durée max', default=False, compute='_compute_duree_cout')
     cout = fields.Float('Coût en Dirham', compute='_compute_duree_cout')
     doc_quitance = fields.Binary('Document de quitance')
+    doc_mef = fields.Binary('Document de mise en fourrière')
 
     @api.model
     def create(self, vals):
@@ -48,7 +49,8 @@ class FourriereFourriere(models.Model):
                 rec.cout = rec.duree * rec.type_entrant.cout
             if rec.state == 'en_cours':
                 rec.excede_duree = rec.duree > rec.type_entrant.max
-                rec.state = "depassement"
+                if rec.excede_duree:
+                    rec.state = "depassement"
 
     def action_en_cours(self):
         self.write({

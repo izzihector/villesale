@@ -7,7 +7,7 @@
             <field name="arch" type="xml">
                 <form string="Quitance">
                     <group>
-                        <field name="num_quitance"/>
+                        <field name="num_quitance" required="1"/>
                         <field name="date_quitance"/>
                         <field name="doc_quitance"/>
                     </group>
