@@ -47,10 +47,13 @@ class FourriereFourriere(models.Model):
                 # rec.duree = (datetime.today() - rec.date_in).seconds / 60
             if rec.type_entrant:
                 rec.cout = rec.duree * rec.type_entrant.cout
-            if rec.state == 'en_cours':
+            if rec.state in ('en_cours', 'depassement'):
                 rec.excede_duree = rec.duree > rec.type_entrant.max
+                print('rec.excede_duree', rec.excede_duree)
                 if rec.excede_duree:
                     rec.state = "depassement"
+                else:
+                    rec.state = "en_cours"
 
     def action_en_cours(self):
         self.write({

@@ -8,10 +8,11 @@
     'author': 'Osisoftware',
     'website': '',
     "depends": [
-        'mail'
+        'mail', 'project_extend'
     ],
     'data': [
         'data/data.xml',
+        'security/groups.xml',
         'security/ir.model.access.csv',
         # 'report/docs_admin_templates.xml',
         # 'report/report.xml',

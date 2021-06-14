@@ -113,5 +113,6 @@
               id="fourriere_fourriere_menu_id"
               action="action_fourriere_fourriere"
               web_icon="fourriere,static/description/icon.png"
+              groups="fourriere.groups_project_gf"
     />
 </odoo>
