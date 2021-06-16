@@ -19,10 +19,11 @@ class FourriereFourriere(models.Model):
     name = fields.Char('Numéro', readonly=True)
     ordonnateur_id = fields.Many2one('fourriere.ordonnateur', 'Ordonnateur')
     emplacement_id = fields.Many2one('fourriere.ordonnateur.emplacement', 'Emplacement')
-    type_entrant = fields.Many2one('fourriere.entrant', 'Type d\'entrant')
+    type_entrant = fields.Many2one('fourriere.entrant.type', string='Type d\'entrant')
+    marque_id = fields.Many2one('fourriere.entrant', 'Marque')
     num_entrant = fields.Char('Numéro d\'entrant')
     num_quitance = fields.Char('Numéro de quitance')
-    marque = fields.Many2one('fourriere.marque', 'Marque')
+    marque = fields.Many2one('fourriere.entrant', 'Marque')
     duree = fields.Float('Durée en jours', compute='_compute_duree_cout')
     excede_duree = fields.Boolean('A éxcédé la durée max', default=False, compute='_compute_duree_cout')
     cout = fields.Float('Coût en Dirham', compute='_compute_duree_cout')
@@ -41,15 +42,14 @@ class FourriereFourriere(models.Model):
             rec.duree = 0
             rec.excede_duree = False
             if rec.date_out:
-                rec.duree = (rec.date_out - rec.date_in).days
+                rec.duree = (rec.date_out - rec.date_in).days + 1
             else:
-                rec.duree = (datetime.today() - rec.date_in).days
+                rec.duree = (datetime.today() - rec.date_in).days + 1
                 # rec.duree = (datetime.today() - rec.date_in).seconds / 60
             if rec.type_entrant:
                 rec.cout = rec.duree * rec.type_entrant.cout
             if rec.state in ('en_cours', 'depassement'):
                 rec.excede_duree = rec.duree > rec.type_entrant.max
-                print('rec.excede_duree', rec.excede_duree)
                 if rec.excede_duree:
                     rec.state = "depassement"
                 else:
@@ -70,12 +70,6 @@ class FourriereOrdonnateur(models.Model):
     name = fields.Char('Nom')
 
 
-class FourriereMarque(models.Model):
-    _name = "fourriere.marque"
-
-    name = fields.Char('Nom')
-
-
 class FourriereOrdonnateurEmplacement(models.Model):
     _name = "fourriere.ordonnateur.emplacement"
 
@@ -84,7 +78,18 @@ class FourriereOrdonnateurEmplacement(models.Model):
 
 class FourriereEntrant(models.Model):
     _name = "fourriere.entrant"
+    _rec_name = "name_ar"
 
     name = fields.Char('Nom')
+    name_ar = fields.Char('Nom en Arabe')
+    type_id = fields.Many2one('fourriere.entrant.type', 'Type d\'entrant')
+
+
+class FourriereEntrantType(models.Model):
+    _name = "fourriere.entrant.type"
+    _rec_name = "name_ar"
+
+    name = fields.Char('Nom')
+    name_ar = fields.Char('Nom en Arabe')
     cout = fields.Float('Coût')
     max = fields.Float('Durée maximale dans la fourrirère en jours', default=365)

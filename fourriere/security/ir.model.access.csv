@@ -1,7 +1,7 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_fourriere_fourriere,access_fourriere_fourriere user,model_fourriere_fourriere,fourriere.groups_project_gf,1,1,1,1
 access_fourriere_ordonnateur,access_fourriere_ordonnateur user,model_fourriere_ordonnateur,fourriere.groups_project_gf,1,1,1,1
-access_fourriere_marque,access_fourriere_marque user,model_fourriere_marque,fourriere.groups_project_gf,1,1,1,1
 access_fourriere_ordonnateur_emplacement,access_ordonnateur_emplacement user,model_fourriere_ordonnateur_emplacement,fourriere.groups_project_gf,1,1,1,1
 access_fourriere_entrant,access_fourriere_entrant user,model_fourriere_entrant,fourriere.groups_project_gf,1,1,1,1
+access_fourriere_type_entrant,access_fourriere_type_entrant user,model_fourriere_entrant_type,fourriere.groups_project_gf,1,1,1,1
 access_quitance_wizard,access_quitance_wizard user,model_quitance_wizard,fourriere.groups_project_gf,1,1,1,1
